@@ -1,0 +1,84 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    /* background: linear-gradient(to right, #4facfe, #00f2fe); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.signup-form {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    transition: all 0.3s ease-in-out;
+}
+
+.signup-form:hover {
+    transform: scale(1.02);
+}
+
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.signup-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.signup-form input:focus {
+    border-color: #4facfe;
+    outline: none;
+    box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+}
+.signup-form input::placeholder{
+    font-weight: bold;
+}
+.signup-form button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-form button:hover {
+    box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+}
+
+@media (max-width: 600px) {
+    .signup-form {
+        margin: 0 10px;
+        padding: 20px;
+    }
+
+     .signup-form h1 {
+        font-size: 20px;
+    }
+
+   .signup-form button {
+        font-size: 14px;
+    }
+
+   .signup-form input {
+        padding: 10px;
+    }
+}
