@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-// import "./signup.css";
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify'
+import "./signup.css";
 
 const Signup = () => {
+
   const [formData, setFormData] = useState({
     fName: "",
     lName: "",
@@ -13,51 +16,37 @@ const Signup = () => {
   });
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    // If we have files (file input), update the state with the file object
-    if (files) {
-      setFormData({ ...formData, [name]: files[0] });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formDataObj = new FormData();
-    Object.keys(formData).forEach((key) => {
-      formDataObj.append(key, formData[key]);
-    });
-    alert("Signup Form Successfully");
-    try {
-      const response = await fetch("http://localhost:4000/signupUser", {
-        method: "POST",
-        body: formDataObj,
-      });
 
-      const data = await response.json();
-      if (response.ok) {
-        alert("Signup successful!");
+    try {
+      const response = await axios.post("http://localhost:4000/signupUser",formData);
+
+      if (response.data.msg === 'User Created Successfully') {
+        toast.success(' User Signup Successfully 😊!');
         setFormData({
           fName: "",
           lName: "",
           email: "",
-          profilePic: null,
+          profilePic:"",
           phoneNo: "",
           password: "",
           address: "",
         });
-      } else {
-        alert(`Signup failed: ${data.msg}`);
       }
     } catch (err) {
-      alert(`Error: ${err.message}`);
+      const errMsg = err.response?.data?.msg || 'Something went wrong';
+      toast.error(`Error: ${errMsg}`);
     }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="signup-form" method="post" action='http://localhost:4000/signupUser'>
+    <div className="signup-container">
+      <ToastContainer position="top-right" autoClose={2500} />
+      <form onSubmit={handleSubmit} className="signup-form">
         <h1>Signup</h1>
         <input
           type="text"
@@ -114,6 +103,7 @@ const Signup = () => {
           required
         />
         <button type="submit">Signup</button>
+        {/* <ToastContainer /> */}
       </form>
     </div>
   );

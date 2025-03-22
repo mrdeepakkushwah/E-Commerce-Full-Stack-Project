@@ -2,6 +2,7 @@ const userModel = require("../models/userModel");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const express = require("express");
 
 const {
   isValid,
@@ -10,7 +11,6 @@ const {
   isValidPassword,
   isValidPhone,
 } = require("./validator");
-const e = require("express");
 
 const signUpUser = async (req, res) => {
   try {
@@ -128,7 +128,7 @@ const logInUser = async (req, res) => {
 
     const matchPassword = await bcrypt.compare(password, findEmail.password);
     if (!matchPassword) {
-      return res.status(400).json({ msg: "Bad Credentials" });
+      return res.status(400).json({ msg: "Enter Corrected Password! Bad Credentials" });
     }
 
     // Genrate Token Using JWT

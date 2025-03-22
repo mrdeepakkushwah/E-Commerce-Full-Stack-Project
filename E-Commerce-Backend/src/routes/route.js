@@ -13,12 +13,12 @@ const {
 const {addProduct,getProducts,getProductById,updateProduct,deleteProduct} = require('../controllers/productController');
 
 const {addToCart, getAllCarts, getCarts, removeCart} = require('../controllers/cartController.js');
-
+const {createContact,getContacts} = require('../controllers/contactController.js')
 //Users
 // router.post("/signupUser", signUpUser);
 const asyncHandler = require("express-async-handler");
 
-router.post("/signupUser", asyncHandler(signUpUser));
+router.post("/signupUser",(signUpUser));
 
 //LogIn User
 router.post("/loginUser", logInUser);
@@ -45,4 +45,8 @@ router.post("/addcart",authMiddleware,addToCart)
 router.get("/getAllCarts",authMiddleware,getAllCarts);
 router.get("/getCart/:userId", getCarts);
 router.delete("/removeProductFromCart",removeCart)
+
+// Caontact 
+router.post('/addContact', createContact);
+router.get('/getContact', getContacts);
 module.exports = router;

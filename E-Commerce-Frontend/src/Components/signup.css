@@ -1,13 +1,11 @@
-body {
+.signup-container {
     font-family: 'Roboto', sans-serif;
-    /* background: linear-gradient(to right, #4facfe, #00f2fe); */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    height: 95vh;
+    margin-top: 15px;
 }
-
 .signup-form {
     background: white;
     padding: 25px;

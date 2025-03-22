@@ -14,7 +14,7 @@ const LoginAndSignup = () => {
         <div className="container">
             <div className="form-container">
                 {isLogin ? <Signup /> :<Login/> }
-                <button onClick={toggleView} className="toggle-button">
+                <button onClick={toggleView} className={isLogin ? "toggle-button" : "toggle-button-2"}>
                     {isLogin ? "Go to Login" : "Go to Signup"}
                 </button>
             </div>
